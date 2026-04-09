@@ -2,36 +2,67 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Employee Data Table</title>
+    <title>Query Builder Filter Test Cases</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 30px;
+            line-height: 1.4;
+            color: #333;
         }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
         h2 {
-            margin-bottom: 15px;
+            margin-top: 30px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
         }
+
+        h3 {
+            margin-top: 25px;
+        }
+
+        p {
+            margin: 6px 0 12px 0;
+            font-weight: bold;
+        }
+
         table {
             border-collapse: collapse;
-            width: 70%;
+            width: 85%;
+            margin-bottom: 25px;
         }
+
         th, td {
-            border: 1px solid #333;
-            padding: 10px 12px;
+            border: 1px solid #444;
+            padding: 8px 10px;
             text-align: left;
         }
+
         th {
             background-color: #f2f2f2;
         }
+
         tr:nth-child(even) {
             background-color: #fafafa;
+        }
+
+        .filter-text {
+            font-style: italic;
+            font-weight: normal;
+            margin-bottom: 8px;
         }
     </style>
 </head>
 <body>
- 
-<h2>Employee Data</h2>
- 
+
+<h1>Query Builder Filter Test Cases – Sample Data & Expected Output</h1>
+
+<h2>Sample Table: Employee_Data</h2>
+
 <table>
     <thead>
         <tr>
@@ -43,52 +74,108 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>1</td>
-            <td>Alice</td>
-            <td>25</td>
-            <td>QA</td>
-            <td>2023-01-10</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Bob</td>
-            <td>30</td>
-            <td>Dev</td>
-            <td>2022-06-15</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>Carol</td>
-            <td>35</td>
-            <td>Dev</td>
-            <td>2021-03-20</td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>David</td>
-            <td>28</td>
-            <td>QA</td>
-            <td>2024-02-01</td>
-        </tr>
-        <tr>
-            <td>5</td>
-            <td>Eva</td>
-            <td>40</td>
-            <td>Manager</td>
-            <td>2020-11-05</td>
-        </tr>
-        <tr>
-            <td>6</td>
-            <td>Frank</td>
-            <td>30</td>
-            <td>QA</td>
-            <td>2022-06-15</td>
-        </tr>
+        <tr><td>1</td><td>Alice</td><td>25</td><td>QA</td><td>2023-01-10</td></tr>
+        <tr><td>2</td><td>Bob</td><td>30</td><td>Dev</td><td>2022-06-15</td></tr>
+        <tr><td>3</td><td>Carol</td><td>35</td><td>Dev</td><td>2021-03-20</td></tr>
+        <tr><td>4</td><td>David</td><td>28</td><td>QA</td><td>2024-02-01</td></tr>
+        <tr><td>5</td><td>Eva</td><td>40</td><td>Manager</td><td>2020-11-05</td></tr>
+        <tr><td>6</td><td>Frank</td><td>30</td><td>QA</td><td>2022-06-15</td></tr>
     </tbody>
 </table>
- 
+
+<!-- AGE = 30 -->
+<h3>Age = 30</h3>
+<p class="filter-text">Filter Applied: Age = 30</p>
+<table>
+    <thead>
+        <tr>
+            <th>EmpID</th><th>Name</th><th>Age</th><th>Department</th><th>JoinDate</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td>2</td><td>Bob</td><td>30</td><td>Dev</td><td>2022-06-15</td></tr>
+        <tr><td>6</td><td>Frank</td><td>30</td><td>QA</td><td>2022-06-15</td></tr>
+    </tbody>
+</table>
+
+<!-- AGE > 30 -->
+<h3>Age &gt; 30</h3>
+<p class="filter-text">Filter Applied: Age &gt; 30</p>
+<table>
+    <tbody>
+        <tr><td>3</td><td>Carol</td><td>35</td><td>Dev</td><td>2021-03-20</td></tr>
+        <tr><td>5</td><td>Eva</td><td>40</td><td>Manager</td><td>2020-11-05</td></tr>
+    </tbody>
+</table>
+
+<!-- AGE <= 28 -->
+<h3>Age &lt;= 28</h3>
+<p class="filter-text">Filter Applied: Age &lt;= 28</p>
+<table>
+    <tbody>
+        <tr><td>1</td><td>Alice</td><td>25</td><td>QA</td><td>2023-01-10</td></tr>
+        <tr><td>4</td><td>David</td><td>28</td><td>QA</td><td>2024-02-01</td></tr>
+    </tbody>
+</table>
+
+<!-- AGE IN -->
+<h3>Age IN (25, 35)</h3>
+<p class="filter-text">Filter Applied: Age IN (25, 35)</p>
+<table>
+    <tbody>
+        <tr><td>1</td><td>Alice</td><td>25</td><td>QA</td><td>2023-01-10</td></tr>
+        <tr><td>3</td><td>Carol</td><td>35</td><td>Dev</td><td>2021-03-20</td></tr>
+    </tbody>
+</table>
+
+<!-- Department = QA -->
+<h3>Department = QA</h3>
+<p class="filter-text">Filter Applied: Department = QA</p>
+<table>
+    <tbody>
+        <tr><td>1</td><td>Alice</td><td>25</td><td>QA</td><td>2023-01-10</td></tr>
+        <tr><td>4</td><td>David</td><td>28</td><td>QA</td><td>2024-02-01</td></tr>
+        <tr><td>6</td><td>Frank</td><td>30</td><td>QA</td><td>2022-06-15</td></tr>
+    </tbody>
+</table>
+
+<!-- STARTS WITH -->
+<h3>Name starts with 'A'</h3>
+<p class="filter-text">Filter Applied: Name starts with 'A'</p>
+<table>
+    <tbody>
+        <tr><td>1</td><td>Alice</td><td>25</td><td>QA</td><td>2023-01-10</td></tr>
+    </tbody>
+</table>
+
+<!-- CONTAINS -->
+<h3>Department contains 'Dev'</h3>
+<p class="filter-text">Filter Applied: Department contains 'Dev'</p>
+<table>
+    <tbody>
+        <tr><td>2</td><td>Bob</td><td>30</td><td>Dev</td><td>2022-06-15</td></tr>
+        <tr><td>3</td><td>Carol</td><td>35</td><td>Dev</td><td>2021-03-20</td></tr>
+    </tbody>
+</table>
+
+<!-- Logical grouping -->
+<h3>(QA OR Dev) AND Age &gt; 30</h3>
+<p class="filter-text">Filter Applied: (Department = QA OR Department = Dev) AND Age &gt; 30</p>
+<table>
+    <tbody>
+        <tr><td>3</td><td>Carol</td><td>35</td><td>Dev</td><td>2021-03-20</td></tr>
+    </tbody>
+</table>
+
+<h3>(QA AND Age &gt; 26) OR Manager</h3>
+<p class="filter-text">Filter Applied: (Department = QA AND Age &gt; 26) OR Department = Manager</p>
+<table>
+    <tbody>
+        <tr><td>4</td><td>David</td><td>28</td><td>QA</td><td>2024-02-01</td></tr>
+        <tr><td>6</td><td>Frank</td><td>30</td><td>QA</td><td>2022-06-15</td></tr>
+        <tr><td>5</td><td>Eva</td><td>40</td><td>Manager</td><td>2020-11-05</td></tr>
+    </tbody>
+</table>
+
 </body>
 </html>
-``
- 
