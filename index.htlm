@@ -1,1 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chart Dashboard</title>
 
+    <!-- Makes the page responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #1e293b;
+            color: white;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .chart-container {
+            padding: 20px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            border-radius: 8px;
+            background: white;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #e5e7eb;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>My Chart Dashboard</h1>
+        <p>Embedded chart from another website</p>
+    </header>
+
+    <div class="chart-container">
+        <!-- Replace the URL below with your chart URL -->
+        <iframe
+            src="<iframe src="https://testing.acieslabs.com/dashboard/consumer/060c6390-8d72-4ed1-8287-8d34d94eba11" width="600" height="100%" frameborder="0" allowfullscreen></iframe>"
+            title="Embedded Chart">
+        </iframe>
+    </div>
+
+    <footer>
+        © 2026 Sayali Jware
+    </footer>
+
+</body>
+</html>
